@@ -14,8 +14,10 @@ set history=100
 " Highlight current line
 set cul
 
+map <Leader> <Plug>(easymotion-prefix)
+
 let mapleader = ","
-nmap <leader> so :source $HOME\_vimrc<CR>
+
 inoremap jk <Esc>
 
 " windows keybidings, ctrl+s, copy, paste, etc.
