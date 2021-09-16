@@ -8,7 +8,23 @@
   <head>
     <title>StartPage</title>
     <style>
-      h1 {
+      .datetime {
+        color: #3c2066;
+      }
+      #date {
+        color: #72a4f8;
+        text-align: right;
+        font-family: "Press Start 2P";
+        font-size: 36px;
+        font-weight: bold;
+      }
+      #time {
+        font-family: "Press Start 2P";
+        margin-top: 10px;
+        font-size: 72px;
+        font-weight: bold;
+      }
+      #maintext {
         font-family: "Press Start 2P";
         margin-top: 190px;
         font-size: 48px;
@@ -32,7 +48,49 @@
       }
     </style>
     <script>
-      function submit() {}
+      function setDate() {
+        let date_doc = document.querySelector("#date");
+        let tmp_date = new Date();
+        let day =
+          tmp_date.getDate() < 10
+            ? "0" + tmp_date.getDate()
+            : tmp_date.getDate();
+        let month =
+          tmp_date.getMonth() + 1 < 10
+            ? "0" + (tmp_date.getMonth() + 1)
+            : tmp_date().getMonth() + 1;
+        let year = tmp_date.getFullYear();
+
+        date_doc.innerHTML = day + ":" + month + ":" + year;
+      }
+      function setTime() {
+        let time_doc = document.querySelector("#time");
+        let tmp_date = new Date();
+        let hours =
+          tmp_date.getHours() < 10
+            ? "0" + tmp_date.getHours()
+            : tmp_date.getHours();
+        let minutes =
+          tmp_date.getMinutes() < 10
+            ? "0" + tmp_date.getMinutes()
+            : tmp_date.getMinutes();
+        let seconds =
+          tmp_date.getSeconds() < 10
+            ? "0" + tmp_date.getSeconds()
+            : tmp_date.getSeconds();
+        time_doc.innerHTML = hours + ":" + minutes + ":" + seconds;
+      }
+      function setWeather() {
+        fetch(
+          "https://api.openweathermap.org/data/2.5/weather?q=Moscow&APPID=e896e9fd410a79183fe868534a72c9f5&units=metric"
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const temp = data["main"]["temp"];
+            const feels_like = data["main"]["feels_like"];
+            const wind_speed = data["wind"]["speed"];
+          });
+      }
       document.addEventListener("DOMContentLoaded", function () {
         document
           .querySelector("#search")
@@ -46,13 +104,21 @@
               location.href = `https://www.google.com/search?q=${s_text}`;
             }
           });
+        setDate();
+        setTime();
+        setWeather();
+        var intervalTime = window.setInterval(function () {
+          setTime();
+        }, 1000);
         //just text
       });
     </script>
   </head>
   <body>
     <div id="app">
-      <h1>Are you still alive, Almir?</h1>
+      <div id="date" class="datetime"></div>
+      <div id="time" class="datetime"></div>
+      <h1 id="maintext">Are you still alive, Almir?</h1>
       <input type="text" placeholder="Search the Web" id="search" size="40" />
       <div id="favorite_container">
         <a href="https://vk.com/feed">

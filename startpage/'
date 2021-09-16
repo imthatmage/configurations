@@ -8,6 +8,12 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Amatic+SC"
   />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous"
+  />
   <head>
     <title>StartPage</title>
     <style>
@@ -61,9 +67,8 @@
         text-align: center;
       }
       #search {
-        font-size: 35px;
-        text-align: center;
-        padding: 20px;
+        height: 40px;
+        width: 30%;
       }
       #favorite_container {
         padding-top: 25px;
@@ -120,19 +125,9 @@
             let add_info_doc = document.querySelector("#add_info");
             add_info_doc.innerHTML = `${environment}: ${environment_description}`;
           });
-      }
-      document.addEventListener("DOMContentLoaded", function () {
+      }function () {
         document
           .querySelector("#search")
-          .addEventListener("keypress", function (e) {
-            if (e.key == "Enter") {
-              let s_text = document
-                .querySelector("#search")
-                .value.trim()
-                .replace(/\s+/g, "+");
-              //location.replace(`https://www.google.com/search?q=${s_text}`);
-              location.href = `https://www.google.com/search?q=${s_text}`;
-            }
           });
         setDate();
         setTime();
@@ -141,7 +136,8 @@
         }, 1000);
         setWeather();
         //just text
-      });
+      }
+      document.addEventListener("DOMContentLoaded", );
     </script>
   </head>
   <body>
@@ -156,13 +152,15 @@
       </div>
       <div id="time" class="datetime"></div>
       <h1 id="maintext">Are you still alive, Almir?</h1>
-      <input
-        type="search"
-        placeholder="Search the Web"
-        id="search"
-        autocomplete="off"
-        size="40"
-      />
+      <form class="form-inline justify-content-center">
+        <input
+          id="search"
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
       <div id="favorite_container">
         <a href="https://vk.com/feed">
           <img src="images/vk.png" alt="VK" width="150" class="logos" />
