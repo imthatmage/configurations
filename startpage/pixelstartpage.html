@@ -8,15 +8,39 @@
   <head>
     <title>StartPage</title>
     <style>
+      #add_weather {
+        text-align: right;
+      }
+      #temp {
+        float: right;
+        padding-left: 200px;
+        text-align: right;
+      }
+      #left_widget {
+        visibility: hidden;
+        text-align: left;
+        font-family: "Press Start 2P";
+        font-size: 26px;
+        font-weight: bold;
+        color: #071991;
+      }
+      #weather_widget {
+        text-align: right;
+      }
+      .inline {
+        display: inline-block;
+      }
+      .logos {
+        position: static;
+      }
+      .logos:hover {
+        filter: saturate(4);
+      }
       .datetime {
         color: #3c2066;
       }
       #date {
-        color: #72a4f8;
-        text-align: right;
-        font-family: "Press Start 2P";
-        font-size: 36px;
-        font-weight: bold;
+        margin-left: 87px;
       }
       #time {
         font-family: "Press Start 2P";
@@ -27,7 +51,7 @@
       #maintext {
         font-family: "Press Start 2P";
         margin-top: 190px;
-        font-size: 48px;
+        font-size: 40px;
         color: midnightblue;
       }
       body {
@@ -38,10 +62,12 @@
         text-align: center;
       }
       #search {
+        font-family: "Press Start 2P";
         margin-top: 50px;
-        font-size: 35px;
+        font-size: 25px;
         text-align: center;
         padding: 20px;
+        background: transparent;
       }
       #favorite_container {
         padding-top: 35px;
@@ -89,6 +115,14 @@
             const temp = data["main"]["temp"];
             const feels_like = data["main"]["feels_like"];
             const wind_speed = data["wind"]["speed"];
+            const environment = data["weather"]["0"]["main"];
+            const environment_description = data["weather"]["0"]["description"];
+            let temp_doc = document.querySelector("#temp");
+            temp_doc.innerHTML = `Moscow: ${temp}°C`;
+            let wind_doc = document.querySelector("#wind");
+            wind_doc.innerHTML = `Wind Speed: ${wind_speed} m/s`;
+            let add_info_doc = document.querySelector("#add_info");
+            add_info_doc.innerHTML = `${environment}: ${environment_description}`;
           });
       }
       document.addEventListener("DOMContentLoaded", function () {
@@ -116,25 +150,48 @@
   </head>
   <body>
     <div id="app">
-      <div id="date" class="datetime"></div>
+      <div id="left_widget">
+        <div id="date" class="inline"></div>
+        <div id="temp" class="inline"></div>
+        <div id="add_weather">
+          <div id="wind"></div>
+          <div id="add_info"></div>
+        </div>
+      </div>
       <div id="time" class="datetime"></div>
       <h1 id="maintext">Are you still alive, Almir?</h1>
-      <input type="text" placeholder="Search the Web" id="search" size="40" />
+      <input
+        type="text"
+        autocomplete="off"
+        placeholder="Search the Web"
+        id="search"
+        size="40"
+      />
       <div id="favorite_container">
         <a href="https://vk.com/feed">
-          <img src="images/vk.png" alt="VK" width="150" />
+          <img src="images/vk.png" alt="VK" width="150" class="logos" />
         </a>
         <a href="https://www.youtube.com">
-          <img src="images/youtube.png" alt="Youtube" width="150" />
+          <img
+            src="images/youtube.png"
+            alt="Youtube"
+            width="150"
+            class="logos"
+          />
         </a>
         <a href="https://play.typeracer.com/">
-          <img src="images/typeracer.png" alt="typeracer" width="150" />
+          <img
+            src="images/typeracer.png"
+            alt="typeracer"
+            width="150"
+            class="logos"
+          />
         </a>
         <a href="https://github.com/Rojanson">
-          <img src="images/github.png" alt="github" width="150" />
+          <img src="images/github.png" alt="github" width="150" class="logos" />
         </a>
         <a href="https://www.twitch.tv">
-          <img src="images/twitch.png" alt="Twitch" width="150" />
+          <img src="images/twitch.png" alt="Twitch" width="150" class="logos" />
         </a>
       </div>
     </div>
