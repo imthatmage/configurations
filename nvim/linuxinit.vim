@@ -79,17 +79,17 @@ Plug 'yuttie/comfortable-motion.vim'
 "EasyMotion
 Plug 'easymotion/vim-easymotion'
 
-"Python Formatter
-Plug 'Vimjas/vim-python-pep8-indent'
-
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+"Indentlines
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " Initialize plugin system
 call plug#end()
 
-" THEMES CONFIG bespin, bright, brewer, ocean, github, paraiso, chalk
+" THEMES CONFIG bespin, bright, brewer, ocean, github, paraiso, chalk, woodland
 colorscheme base16-woodland
 
 " easy motion
