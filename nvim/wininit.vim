@@ -5,6 +5,15 @@ set guifont=Hack
 " this allow to have personal theme in nvim
 set termguicolors
 
+set smartindent                     "make indenting smart
+set autoindent                      "good auto indent
+
+set expandtab                       "convert tabs to spaces
+
+"set nowrap                         "long lines in one line
+
+set t_Co=256
+
 " splitting new term below 
 set splitbelow
 
@@ -14,11 +23,11 @@ set history=100
 " Highlight current line
 set cul
 
-map <Leader> <Plug>(easymotion-prefix)
-
 let mapleader = ","
-
+nmap <leader> so :source $HOME\_vimrc<CR>
 inoremap jk <Esc>
+
+map <Leader> <Plug>(easymotion-prefix)
 
 " windows keybidings, ctrl+s, copy, paste, etc.
 set clipboard=unnamed
@@ -92,7 +101,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 " THEMES CONFIG
-colorscheme base16-Bright
+colorscheme base16-woodland
 
 "NERDTreeConfig
 map <C-n> :NERDTreeToggle<CR>
@@ -277,6 +286,11 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \  'coc-prettier',
   \ ]
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'selenized_light',
+      \ }
 
 " some stuff for coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
