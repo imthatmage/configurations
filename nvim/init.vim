@@ -1,9 +1,24 @@
 syntax on
 
+nnoremap <leader>d "_d "deleting without copy
+xnoremap <leader>d "_d "deleting without copy
+
 set guifont=Hack
+
+set mouse=a " enable mouse
+
+set noswapfile
 
 " this allow to have personal theme in nvim
 set termguicolors
+
+set smartindent                     "make indenting smart
+set autoindent                      "good auto indent
+
+
+"set nowrap                         "long lines in one line
+
+set t_Co=256
 
 " splitting new term below 
 set splitbelow
@@ -65,7 +80,7 @@ Plug 'scrooloose/syntastic'
 
 "Autocomplete also below all needed settings
 "Plug 'neoclide/coc.nvim'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Minimal status bar
 Plug 'itchyny/lightline.vim'
@@ -83,14 +98,23 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+
+Plug 'tell-k/vim-autopep8'
+
 "Indentlines
-Plug 'lukas-reineke/indent-blankline.nvim'
+"Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Initialize plugin system
 call plug#end()
 
-" THEMES CONFIG bespin, bright, brewer, ocean, github, paraiso, chalk, woodland
+" THEMES CONFIG flat, bespin, bright, brewer, ocean, github, paraiso, chalk, woodland
 colorscheme base16-woodland
+
+" auto-pep8
+let g:autopep8_on_save = 1
+"don't show diff window in pep8
+let g:autopep8_disable_show_diff=1
+let g:autopep8_indent_size=4
 
 " easy motion
 map <Leader> <Plug>(easymotion-prefix)
@@ -101,9 +125,10 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 
-"STATUS LINE CONFIG
+"STATUS LINE CONFIG 16color(dark), selenized_light/white, one(light/dark)
 let g:lightline = {
-      \ 'colorscheme': 'selenized_light',
+      \ 'colorscheme': 'one',
+			\ 'background' : 'light',
       \ }
 
 "Minimal StatusBarConfig
