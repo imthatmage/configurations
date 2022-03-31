@@ -107,8 +107,8 @@ Plug 'tell-k/vim-autopep8'
 " Initialize plugin system
 call plug#end()
 
-" THEMES CONFIG flat, bespin, bright, brewer, ocean, github, paraiso, chalk, woodland
-colorscheme base16-woodland
+" THEMES CONFIG marrakesh, 3024, isotope, flat, bespin, bright, brewer, ocean, github, paraiso, chalk, woodland
+colorscheme base16-bright
 
 " auto-pep8
 let g:autopep8_on_save = 1
@@ -125,9 +125,9 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=1
 
-"STATUS LINE CONFIG 16color(dark), selenized_light/white, one(light/dark)
+"STATUS LINE CONFIG 16color(dark), tomorrow, selenized_light/white, one(light/dark)
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'ayu_dark',
 			\ 'background' : 'light',
       \ }
 
