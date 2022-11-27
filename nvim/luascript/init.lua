@@ -3,15 +3,19 @@ vim.g.material_style = "darker"
 vim.opt.termguicolors = true
 
 vim.cmd([[
-set notimeout
+set notimeout 
+set mouse=
 set clipboard+=unnamedplus
 colorscheme material
 ]])
 
+
 -- manipulations behavior
 vim.bo.expandtab = true 
-vim.bo.shiftwidth = 4
-vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 2
+vim.bo.softtabstop = 2
+vim.opt.relativenumber = true
+vim.opt.number = true
 vim.g.mapleader = ","
 vim.opt.wrap = true
 vim.opt.encoding = "utf-8"

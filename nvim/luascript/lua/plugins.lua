@@ -26,5 +26,27 @@ return require('packer').startup(function(use)
 
   -- theme
   use 'marko-cerovac/material.nvim'
-end)
 
+
+  use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
+
+  use 'yamatsum/nvim-cursorline'
+
+  use {
+    'startup-nvim/startup.nvim',
+    requires = {'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim'}
+  }
+
+
+  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+end)
